@@ -33,17 +33,20 @@ export const Control = styled.div`
 
   .prev {
     background-position: 0 -130px;
+    cursor:pointer;
   }
 
   .play {
     width: 36px;
     height: 36px;
     margin: 0 8px;
+    cursor:pointer;
     background-position: 0 ${props => props.isPlaying ? "-165px": "-204px"};
   }
 
   .next {
     background-position: -80px -130px;
+    cursor:pointer;
   }
 `
 
@@ -123,6 +126,7 @@ export const Operator = styled.div`
   .btn {
     width: 25px;
     height: 25px;
+    cursor:pointer;
   }
 
   .favor {

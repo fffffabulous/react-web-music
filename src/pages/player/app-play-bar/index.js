@@ -3,12 +3,12 @@ import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 
 import { message } from 'antd';
 
-import { getPlayUrl, formatMinuteSecond } from '@/utils/format-utils';
-import { 
-  getSongDetailAction, 
+import { getPlayUrl, formatMinuteSecond, getSizeImage } from '@/utils/format-utils';
+import {
+  getSongDetailAction,
   changeCurrentLyricIndexAction,
   changePlaySequenceAction,
-  changePlaySongAction 
+  changePlaySongAction
 } from '../store/actionCreators';
 
 import HYAppPlayPanel from '../app-play-panel'
@@ -49,7 +49,7 @@ export default memo(function HYAppPlaybar() {
   // other hooks
   const audioRef = useRef();
   useEffect(() => {
-    dispatch(getSongDetailAction(167876));
+    dispatch(getSongDetailAction(1441183869));
   }, [dispatch]);
 
   useEffect(() => {
@@ -88,7 +88,6 @@ export default memo(function HYAppPlaybar() {
     const finalIndex = i - 1;
     if (finalIndex !== currentLyricIndex) {
       dispatch(changeCurrentLyricIndexAction(finalIndex));
-      console.log(currentLyrics[finalIndex]);
       message.open({
         content: currentLyrics[finalIndex].content,
         key: "lyric",
@@ -129,16 +128,16 @@ export default memo(function HYAppPlaybar() {
     <PlaybarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
         <Control isPlaying={isPlaying}>
-          <button className="sprite_playbar btn prev" 
+          <button className="sprite_playbar btn prev"
                   onClick={e => dispatch(changePlaySongAction(-1))}></button>
           <button className="sprite_playbar btn play" onClick={e => play()}></button>
-          <button className="sprite_playbar btn next" 
+          <button className="sprite_playbar btn next"
                   onClick={e => dispatch(changePlaySongAction(1))}></button>
         </Control>
         <PlayInfo>
           <div className="image">
             <NavLink to="/discover/player">
-              <img src="https://p2.music.126.net/OVkXDNmbk2uj6wE1KTZIwQ==/109951165203334337.jpg?param=34y34" alt="" />
+              <img src={getSizeImage(currentSong.al.picUrl, 34)} alt="" />
             </NavLink>
           </div>
           <div className="info">
@@ -163,9 +162,9 @@ export default memo(function HYAppPlaybar() {
           </div>
           <div className="right sprite_playbar">
             <button className="sprite_playbar btn volume"></button>
-            <button className="sprite_playbar btn loop" 
+            <button className="sprite_playbar btn loop"
                     onClick={e => dispatch(changePlaySequenceAction(playSequence+1))}></button>
-            <button className="sprite_playbar btn playlist" 
+            <button className="sprite_playbar btn playlist"
                     onClick={e => setShowPanel(!showPanel)}>
               {playList.length}
             </button>

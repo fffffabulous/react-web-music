@@ -82,6 +82,9 @@ export const RankingListWrapper = styled.div`
           .name {
             margin-left: 10px;
           }
+          .sprite_table{
+            cursor: pointer;
+          }
         }
       }
     }

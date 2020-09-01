@@ -1,10 +1,13 @@
 import React, { memo } from 'react';
-import { useSelector, shallowEqual } from "react-redux";
+import {useSelector, shallowEqual, useDispatch} from "react-redux";
+import { Link } from 'react-router-dom';
 
 import {
   getSizeImage,
   formatMinuteSecond
 } from "@/utils/format-utils.js"
+
+import { getSongDetailAction } from '@/pages/player/store';
 
 import HYThemeHeaderSong from '@/components/theme-header-song';
 import {
@@ -12,6 +15,14 @@ import {
 } from './style';
 
 export default memo(function HYRankingList() {
+  // redux hooks
+  const dispatch = useDispatch();
+
+  // other handle
+  const playMusic = (item) => {
+    dispatch(getSongDetailAction(item.id));
+  }
+
   const state = useSelector(state => ({
     playList: state.getIn(["ranking", "playList"])
   }), shallowEqual);
@@ -47,8 +58,8 @@ export default memo(function HYRankingList() {
                           index < 3 ?
                             (<img src={getSizeImage(item.al.picUrl, 50)} alt="" />) : null
                         }
-                        <span className="play sprite_table"></span>
-                        <span className="name">{item.name}</span>
+                        <span className="play sprite_table" onClick={e => playMusic(item)}></span>
+                        <Link to="/discover/player" className="name" onClick={e => playMusic(item)}>{item.name}</Link>
                       </div>
                     </td>
                     <td>{formatMinuteSecond(item.dt)}</td>
