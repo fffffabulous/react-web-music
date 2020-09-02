@@ -27,6 +27,7 @@ export const AlbumWrapper = styled.div`
   .album-info {
     font-size: 12px;
     width: ${props => props.size};
+    height: 56px;
     .name {
       color: #000;
       white-space: nowrap;

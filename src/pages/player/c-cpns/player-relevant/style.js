@@ -6,12 +6,17 @@ export const RelevantWrapper = styled.div`
   .songs {
     .song-item {
       display: flex;
+      height: 36px;
+      overflow: hidden;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
 
       .info {
         .title {
+          width: 154px;
+          height: 18px;
+          overflow: hidden;
           a {
             color: #666;
           }

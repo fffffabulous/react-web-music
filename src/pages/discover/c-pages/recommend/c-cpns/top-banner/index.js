@@ -29,7 +29,7 @@ export default memo(function HYTopBanner() {
   const bannerChange = useCallback((from, to) => {
     setCurrentIndex(to);
   }, []);
-
+  console.log('banner', state)
   const bgImage = state.banners[currentIndex] && (state.banners[currentIndex].imageUrl + "?imageView&blur=40x20")
 
   return (
