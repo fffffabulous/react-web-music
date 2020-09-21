@@ -4,7 +4,7 @@ export default function request(option) {
 	return new Promise((resolve, reject) => {
 		// 1.创建axios的实例
 		const instance = originAxios.create({
-			baseURL: 'https://autumnfish.cn/',
+			baseURL: 'https://nicemusic-api.lxhcool.cn/',
 			timeout: 10000
 		});
 
